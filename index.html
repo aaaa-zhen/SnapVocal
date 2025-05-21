@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo to English Word</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="app-header">
+            <h1>Photo to English Word</h1>
+            <p class="subtitle">Take a photo and learn its English name instantly</p>
+        </div>
+        
+        <div class="tab-buttons">
+            <button class="tab-button active" onclick="switchTab('camera')">
+                <span class="icon">📸</span>Camera
+            </button>
+            <button class="tab-button" onclick="switchTab('favorites')">
+                <span class="icon">⭐</span>Favorites
+            </button>
+        </div>
+
+        <!-- Camera Tab -->
+        <div id="camera-tab" class="tab-content active">
+            <!-- Camera Feed Container -->
+            <div id="cameraContainer">
+                <video id="cameraFeed" autoplay playsinline muted></video>
+            </div>
+            <canvas id="snapshotCanvas" style="display:none;"></canvas>
+
+            <!-- Buttons -->
+            <div class="action-buttons">
+                <button id="takePhotoButton" class="primary-button">
+                    <span class="icon">📸</span> Take Photo
+                </button>
+            </div>
+
+            <div id="result"></div>
+        </div>
+
+        <!-- Favorites Tab -->
+        <div id="favorites-tab" class="tab-content">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalWords">0</div>
+                    <div class="stat-label">Words Learned</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="todayWords">0</div>
+                    <div class="stat-label">Today</div>
+                </div>
+            </div>
+
+            <div class="favorites-list" id="favoritesList">
+                <div class="empty-state">
+                    <div class="icon">📚</div>
+                    <h3>No words saved yet</h3>
+                    <p>Start taking photos to build your vocabulary!</p>
+                </div>
+            </div>
+
+            <div class="favorites-actions">
+                <button onclick="exportFavorites()" class="secondary-button">
+                    <span class="icon">📝</span> Export to Text
+                </button>
+                <button onclick="clearAllFavorites()" class="danger-button">
+                    <span class="icon">🗑️</span> Clear All
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
